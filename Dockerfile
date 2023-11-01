@@ -1,4 +1,5 @@
-FROM openjdk:8
-EXPOSE 8087
-ADD target/demo.jar demo.jar
-ENTRYPOINT ["java","-jar","/demo.jar"]
+FROM openjdk:17-jdk-slim
+ARG JAR_FILE=target/demo-0.0.1.jar
+WORKDIR .
+COPY ${JAR_FILE} demo.jar
+ENTRYPOINT ["java","-jar","demo.jar"]
